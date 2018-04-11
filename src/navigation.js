@@ -7,7 +7,11 @@ import {
 
 import { Text } from 'react-native';
 
+import Touchable from '@appandflow/touchable';
+
 import { FontAwesome, SimpleLineIcons, EvilIcons } from '@expo/vector-icons';
+
+import { makeHitSlop } from './utils/metrics';
 
 import { colors } from './utils/constants';
 import HomeScreen from './screens/HomeScreen';
@@ -24,7 +28,6 @@ const Tabs = TabNavigator(
     Home: {
       screen: HomeScreen,
       navigationOptions: () => ({
-        headerTitle: 'Home',
         tabBarIcon: ({ tintColor }) => (
           <FontAwesome size={TAB_ICON_SIZE} color={tintColor} name="home" />
         )
@@ -33,34 +36,33 @@ const Tabs = TabNavigator(
     Products: {
       screen: ProductScreen,
       navigationOptions: () => ({
-        headerTitle: 'Products'
-      }),
-      tabBarIcon: ({ tintColor }) => (
-        <FontAwesome size={TAB_ICON_SIZE} color={tintColor} name="th" />
-      )
+        headerTitle: 'Products',
+        tabBarIcon: ({ tintColor }) => (
+          <FontAwesome size={TAB_ICON_SIZE} color={tintColor} name="th" />
+        )
+      })
     },
     About: {
       screen: AboutScreen,
       navigationOptions: () => ({
-        headerTitle: 'About'
-      }),
-      tabBarIcon: ({ tintColor }) => (
-        <FontAwesome
-          size={TAB_ICON_SIZE}
-          color={tintColor}
-          name="
-        group"
-        />
-      )
+        headerTitle: 'About Us',
+        tabBarIcon: ({ tintColor }) => (
+          <FontAwesome size={TAB_ICON_SIZE} color={tintColor} name="group" />
+        )
+      })
     },
     Contact: {
       screen: ContactScreen,
       navigationOptions: () => ({
-        headerTitle: 'Contact'
-      }),
-      tabBarIcon: ({ tintColor }) => (
-        <FontAwesome size={TAB_ICON_SIZE} color={tintColor} name="envelope-o" />
-      )
+        headerTitle: 'Contact',
+        tabBarIcon: ({ tintColor }) => (
+          <FontAwesome
+            size={TAB_ICON_SIZE}
+            color={tintColor}
+            name="envelope-o"
+          />
+        )
+      })
     }
   },
   {
@@ -69,7 +71,7 @@ const Tabs = TabNavigator(
     swipeEnabled: false,
     tabBarOptions: {
       showIcon: true,
-      showLabel: true,
+      showLabel: false,
       activeTintColor: colors.PRIMARY,
       inactiveTintColor: colors.LIGHT_GRAY,
       style: {
@@ -87,7 +89,15 @@ const NewProductModal = StackNavigator(
       screen: NewProductScreen,
       navigationOptions: ({ navigation }) => ({
         headerLeft: <Text>Back</Text>,
-        headerRight: <EvilIcons color={colors.PRIMARY} size={25} name="close" />
+        headerRight: (
+          <Touchable
+            hitSlop={makeHitSlop(20)}
+            feedback="opacity"
+            onPress={() => navigation.navigate('Home')}
+          >
+            <EvilIcons color={colors.PRIMARY} size={25} name="close" />
+          </Touchable>
+        )
       })
     }
   },
@@ -104,6 +114,9 @@ const AppMainNav = StackNavigator(
     NewProduct: {
       screen: NewProductModal
     }
+  },
+  {
+    initialRouteName: 'Home'
   },
   {
     cardStyle: {
