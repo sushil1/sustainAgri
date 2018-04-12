@@ -71,7 +71,7 @@ const Tabs = TabNavigator(
     swipeEnabled: false,
     tabBarOptions: {
       showIcon: true,
-      showLabel: false,
+      showLabel: true,
       activeTintColor: colors.PRIMARY,
       inactiveTintColor: colors.LIGHT_GRAY,
       style: {
@@ -93,7 +93,7 @@ const NewProductModal = StackNavigator(
           <Touchable
             hitSlop={makeHitSlop(20)}
             feedback="opacity"
-            onPress={() => navigation.navigate('Home')}
+            onPress={() => navigation.goBack()}
           >
             <EvilIcons color={colors.PRIMARY} size={25} name="close" />
           </Touchable>
@@ -111,12 +111,15 @@ const AppMainNav = StackNavigator(
     Home: {
       screen: Tabs
     },
+    Product: {
+      screen: ProductScreen
+    },
     NewProduct: {
       screen: NewProductModal
     }
   },
   {
-    initialRouteName: 'Home'
+    initialRouteName: 'Product'
   },
   {
     cardStyle: {
