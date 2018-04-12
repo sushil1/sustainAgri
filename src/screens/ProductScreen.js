@@ -40,7 +40,7 @@ class ProductScreen extends Component {
         <View style={styles.container}>
           <FlatList
             style={{ alignSelf: 'stretch' }}
-            data={[1, 2, 3, 4, 5]}
+            data={[1, 2, 3, 4]}
             keyExtractor={item => item.toString()}
             renderItem={this._renderPlaceholder}
           />

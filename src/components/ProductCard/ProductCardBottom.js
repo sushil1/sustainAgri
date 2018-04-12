@@ -67,8 +67,6 @@ const ProductCardBottom = ({ description, price, rating }) => (
         <FontAwesome name="star" size={ICON_SIZE} style={styles.ratingButton} />
         <FontAwesome name="star" size={ICON_SIZE} style={styles.ratingButton} />
         <FontAwesome name="star" size={ICON_SIZE} style={styles.ratingButton} />
-        <FontAwesome name="star" size={ICON_SIZE} style={styles.ratingButton} />
-        <FontAwesome name="star" size={ICON_SIZE} style={styles.ratingButton} />
       </View>
     </View>
   </View>

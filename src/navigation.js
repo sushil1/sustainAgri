@@ -111,15 +111,12 @@ const AppMainNav = StackNavigator(
     Home: {
       screen: Tabs
     },
-    Product: {
-      screen: ProductScreen
-    },
     NewProduct: {
       screen: NewProductModal
     }
   },
   {
-    initialRouteName: 'Product'
+    initialRouteName: 'Home'
   },
   {
     cardStyle: {

@@ -57,16 +57,16 @@ const HomeScreen = ({ navigation }) => (
       <Text style={styles.homeText}>Sustainable Farm</Text>
     </View>
     <Text style={styles.mottoText}>For today and future. For us and them.</Text>
-
-    <Touchable
-      hitSlop={makeHitSlop(20)}
-      feedback="opacity"
-      style={styles.btnWrapper}
-      onPress={() => navigation.navigate('NewProduct')}
-    >
-      <Text style={styles.newProductsLink}>Go to New Products</Text>
-    </Touchable>
   </View>
 );
 
 export default HomeScreen;
+
+// <Touchable
+// hitSlop={makeHitSlop(20)}
+// feedback="opacity"
+// style={styles.btnWrapper}
+// onPress={() => navigation.navigate('NewProduct')}
+// >
+// <Text style={styles.newProductsLink}>Go to New Products</Text>
+// </Touchable>
