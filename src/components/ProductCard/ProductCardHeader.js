@@ -1,22 +1,54 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
+import { FontAwesome } from '@expo/vector-icons';
+import Touchable from '@appandflow/touchable';
+
+import { colors } from '../../utils/constants';
+import { makeHitSlop } from '../../utils/metrics';
+
+const ICON_SIZE = 25;
+
 const styles = StyleSheet.create({
   root: {
-    backgroundColor: 'red',
-    height: 50,
+    height: 40,
     flexDirection: 'row',
     alignItems: 'center'
   },
+  productNameContainer: {
+    flex: 0.9
+  },
   productName: {
-    flex: 0.2
-  }
+    fontSize: 20,
+    fontWeight: '600',
+    color: colors.SECONDARY
+  },
+  addToCartContainer: {
+    flex: 0.2,
+    alignItems: 'center'
+  },
+  addToCartButton: {}
 });
 
 const ProductCardHeader = ({ name }) => (
   <View style={styles.root}>
-    <Text style={styles.productName}>{name}</Text>
-    <Text>button</Text>
+    <View style={styles.productNameContainer}>
+      <Text style={styles.productName}>{name}</Text>
+    </View>
+
+    <View style={styles.addToCartContainer}>
+      <Touchable
+        hitSlop={makeHitSlop(20)}
+        feedback="opacity"
+        style={styles.addToCartButton}
+      >
+        <FontAwesome
+          name="cart-plus"
+          size={ICON_SIZE}
+          color={colors.LIGHT_GRAY}
+        />
+      </Touchable>
+    </View>
   </View>
 );
 

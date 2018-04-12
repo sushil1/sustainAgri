@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 
 import Placeholder from 'rn-placeholder';
 
@@ -12,7 +12,6 @@ const styles = StyleSheet.create({
   root: {
     minHeight: 120,
     backgroundColor: colors.WHITE,
-    //backgroundColor: 'pink',
     width: '100%',
     padding: 7,
     shadowColor: colors.SECONDARY,
@@ -24,11 +23,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     marginVertical: 5
   },
-  cardContentContainer: {
+  cardImageContainer: {
+    flex: 1
+  },
+  img: {
     flex: 1,
-    paddingVertical: 10,
-    paddingRight: 20,
-    paddingLeft: 0
+    width: '100%'
   },
   cardContentText: {
     fontSize: 14,
@@ -48,7 +48,8 @@ function ProductCard({
   quantity,
   rating,
   isLoaded,
-  placeholder
+  placeholder,
+  thumbnail
 }) {
   if (placeholder) {
     return (
@@ -70,8 +71,8 @@ function ProductCard({
       <View style={styles.root}>
         <ProductCardHeader name={name} />
 
-        <View style={styles.cardContentContainer}>
-          <Text style={styles.cardContentText}>tthis is card content</Text>
+        <View style={styles.cardImageContainer}>
+          <Image style={styles.img} source={thumbnail} />
         </View>
 
         <ProductCardBottom description={description} price={price} />
