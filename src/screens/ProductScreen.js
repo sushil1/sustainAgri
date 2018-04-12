@@ -95,5 +95,38 @@ const products = [
     price: 3000,
     thumbnail: herbs,
     rating: 4
+  },
+  {
+    _id: 103,
+    name: 'Milk',
+    description:
+      'Local cow milk, high in calcium and A2 protein, its really good for babies as well as adults',
+    quantity: 1,
+    measurement: 'litre',
+    price: 5000,
+    thumbnail: milk,
+    rating: 4
+  },
+  {
+    _id: 104,
+    name: 'Coffee',
+    description:
+      'Local coffee made grown in our own garden, pure organic aromatic coffee',
+    quantity: 1,
+    measurement: 'cup',
+    price: 4000,
+    thumbnail: coffee,
+    rating: 3
+  },
+  {
+    _id: 105,
+    name: 'Herbs',
+    description:
+      'Local herbs from the garden, varities of seasonal herbs available',
+    quantity: 1,
+    measurement: 'bunch',
+    price: 3000,
+    thumbnail: herbs,
+    rating: 4
   }
 ];

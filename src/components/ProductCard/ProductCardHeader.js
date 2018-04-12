@@ -27,7 +27,9 @@ const styles = StyleSheet.create({
     flex: 0.2,
     alignItems: 'center'
   },
-  addToCartButton: {}
+  addToCartButton: {
+    color: '#000'
+  }
 });
 
 const ProductCardHeader = ({ name }) => (
@@ -37,16 +39,8 @@ const ProductCardHeader = ({ name }) => (
     </View>
 
     <View style={styles.addToCartContainer}>
-      <Touchable
-        hitSlop={makeHitSlop(20)}
-        feedback="opacity"
-        style={styles.addToCartButton}
-      >
-        <FontAwesome
-          name="cart-plus"
-          size={ICON_SIZE}
-          color={colors.LIGHT_GRAY}
-        />
+      <Touchable hitSlop={makeHitSlop(20)} feedback="opacity">
+        <FontAwesome name="cart-plus" size={ICON_SIZE} />
       </Touchable>
     </View>
   </View>
