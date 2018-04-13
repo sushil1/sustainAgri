@@ -18,6 +18,7 @@ import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
 import ContactScreen from './screens/ContactScreen';
 import AboutScreen from './screens/AboutScreen';
+import ProductDetailComponent from './components/ProductDetailComponent';
 
 import NewProductScreen from './screens/NewProductScreen';
 
@@ -37,6 +38,11 @@ const Tabs = TabNavigator(
       screen: ProductScreen,
       navigationOptions: () => ({
         headerTitle: 'Products',
+        headerRight: (
+          <Touchable hitSlop={makeHitSlop(20)} feedback="opacity">
+            <EvilIcons size={25} name="cart" />
+          </Touchable>
+        ),
         tabBarIcon: ({ tintColor }) => (
           <FontAwesome size={TAB_ICON_SIZE} color={tintColor} name="th" />
         )
@@ -83,6 +89,37 @@ const Tabs = TabNavigator(
   }
 );
 
+const ProductDetailModal = StackNavigator(
+  {
+    ProductDetail: {
+      screen: ProductDetailComponent,
+      navigationOptions: ({ navigation }) => ({
+        headerLeft: (
+          <Touchable
+            hitSlop={makeHitSlop(20)}
+            feedback="opacity"
+            onPress={() => navigation.navigate('Product')}
+          >
+            <EvilIcons size={30} name="chevron-left" />
+          </Touchable>
+        ),
+        headerRight: (
+          <Touchable
+            hitSlop={makeHitSlop(20)}
+            feedback="opacity"
+            onPress={() => navigation.goBack()}
+          >
+            <EvilIcons size={25} name="cart" />
+          </Touchable>
+        )
+      })
+    }
+  },
+  {
+    headerMode: 'none'
+  }
+);
+
 const NewProductModal = StackNavigator(
   {
     NewProduct: {
@@ -95,7 +132,7 @@ const NewProductModal = StackNavigator(
             feedback="opacity"
             onPress={() => navigation.goBack()}
           >
-            <EvilIcons color={colors.PRIMARY} size={25} name="close" />
+            <EvilIcons size={25} name="close" />
           </Touchable>
         )
       })
@@ -110,6 +147,20 @@ const AppMainNav = StackNavigator(
   {
     Home: {
       screen: Tabs
+    },
+    Product: {
+      screen: ProductScreen,
+      navigationOptions: ({ navigate }) => ({
+        headerTitle: 'Products',
+        headerRight: (
+          <Touchable hitSlop={makeHitSlop(20)} feedback="opacity">
+            <EvilIcons size={25} name="cart" />
+          </Touchable>
+        )
+      })
+    },
+    ProductDetail: {
+      screen: ProductDetailModal
     },
     NewProduct: {
       screen: NewProductModal
