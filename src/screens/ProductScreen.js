@@ -28,7 +28,9 @@ class ProductScreen extends Component {
     }, 2000);
   }
 
-  _renderItem = ({ item }) => <ProductCard {...item} />;
+  _renderItem = ({ item }) => (
+    <ProductCard {...item} navigation={this.props.navigation} />
+  );
 
   _renderPlaceholder = () => (
     <ProductCard placeholder isLoaded={this.state.isLoaded} />
@@ -54,6 +56,7 @@ class ProductScreen extends Component {
           data={products}
           keyExtractor={item => item._id}
           renderItem={this._renderItem}
+          navigation={this.props.navigation}
         />
       </View>
     );

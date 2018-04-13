@@ -20,7 +20,7 @@ import ContactScreen from './screens/ContactScreen';
 import AboutScreen from './screens/AboutScreen';
 import ProductDetailComponent from './components/ProductDetailComponent';
 
-import NewProductScreen from './screens/NewProductScreen';
+import CartScreen from './screens/CartScreen';
 
 const TAB_ICON_SIZE = 20;
 
@@ -36,10 +36,15 @@ const Tabs = TabNavigator(
     },
     Products: {
       screen: ProductScreen,
-      navigationOptions: () => ({
+      navigationOptions: ({ navigation }) => ({
         headerTitle: 'Products',
         headerRight: (
-          <Touchable hitSlop={makeHitSlop(20)} feedback="opacity">
+          <Touchable
+            hitSlop={makeHitSlop(20)}
+            feedback="opacity"
+            style={{ marginRight: 15 }}
+            onPress={() => navigation.navigate('Cart')}
+          >
             <EvilIcons size={25} name="cart" />
           </Touchable>
         ),
@@ -89,81 +94,68 @@ const Tabs = TabNavigator(
   }
 );
 
-const ProductDetailModal = StackNavigator(
+const AppMainNav = StackNavigator(
   {
+    Home: {
+      screen: Tabs
+    },
+
+    Product: {
+      screen: ProductScreen,
+      navigationOptions: ({ navigation }) => ({
+        headerTitle: 'Products',
+        headerRight: (
+          <Touchable
+            hitSlop={makeHitSlop(20)}
+            feedback="opacity"
+            onPress={() => navigation.navigate('Cart')}
+          >
+            <EvilIcons size={25} name="cart" />
+          </Touchable>
+        )
+      })
+    },
     ProductDetail: {
       screen: ProductDetailComponent,
       navigationOptions: ({ navigation }) => ({
+        headerTitle: <Text>{navigation.state.params.name}</Text>,
         headerLeft: (
           <Touchable
             hitSlop={makeHitSlop(20)}
             feedback="opacity"
-            onPress={() => navigation.navigate('Product')}
+            onPress={() => navigation.goBack()}
+            style={{ marginLeft: 15 }}
           >
-            <EvilIcons size={30} name="chevron-left" />
+            <EvilIcons size={35} name="chevron-left" />
           </Touchable>
         ),
         headerRight: (
           <Touchable
             hitSlop={makeHitSlop(20)}
             feedback="opacity"
-            onPress={() => navigation.goBack()}
+            style={{ marginRight: 15 }}
+            onPress={() => navigation.navigate('Cart')}
           >
             <EvilIcons size={25} name="cart" />
           </Touchable>
         )
       })
-    }
-  },
-  {
-    headerMode: 'none'
-  }
-);
-
-const NewProductModal = StackNavigator(
-  {
-    NewProduct: {
-      screen: NewProductScreen,
+    },
+    Cart: {
+      screen: CartScreen,
       navigationOptions: ({ navigation }) => ({
-        headerLeft: <Text>Back</Text>,
-        headerRight: (
+        headerTitle: <EvilIcons size={25} name="cart" />,
+        headerLeft: (
           <Touchable
             hitSlop={makeHitSlop(20)}
             feedback="opacity"
+            style={{ marginLeft: 15 }}
             onPress={() => navigation.goBack()}
           >
-            <EvilIcons size={25} name="close" />
+            <EvilIcons size={35} name="chevron-left" />
           </Touchable>
         )
       })
-    }
-  },
-  {
-    headerMode: 'none'
-  }
-);
-
-const AppMainNav = StackNavigator(
-  {
-    Home: {
-      screen: Tabs
-    },
-    Product: {
-      screen: ProductScreen,
-      navigationOptions: ({ navigate }) => ({
-        headerTitle: 'Products',
-        headerRight: (
-          <Touchable hitSlop={makeHitSlop(20)} feedback="opacity">
-            <EvilIcons size={25} name="cart" />
-          </Touchable>
-        )
-      })
-    },
-    ProductDetail: {
-      screen: ProductDetailModal
-    },
-    NewProduct: {
-      screen: NewProductModal
     }
   },
   {

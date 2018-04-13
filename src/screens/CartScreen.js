@@ -4,16 +4,16 @@ import { StyleSheet, Text, View } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'blue',
+    backgroundColor: 'pink',
     alignItems: 'center',
     justifyContent: 'center'
   }
 });
 
-const NewProductScreen = () => (
+const CartScreen = () => (
   <View style={styles.container}>
-    <Text>Create your new product</Text>
+    <Text>Cart Items</Text>
   </View>
 );
 
-export default NewProductScreen;
+export default CartScreen;

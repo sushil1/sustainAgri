@@ -23,34 +23,20 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: colors.SECONDARY
   },
-  addToCartContainer: {
+  rightIconContainer: {
     flex: 0.2,
     alignItems: 'center'
-  },
-  addToCartButton: {
-    color: '#000'
   }
 });
 
-const ProductCardHeader = ({ name, navigation }) => (
+const ProductCardHeader = ({ name }) => (
   <View style={styles.root}>
     <View style={styles.productNameContainer}>
       <Text style={styles.productName}>{name}</Text>
     </View>
 
-    <View style={styles.addToCartContainer}>
-      <Touchable
-        hitSlop={makeHitSlop(20)}
-        feedback="opacity"
-        onPress={() =>
-          navigation.navigate('ProductDetails', {
-            productId: _id,
-            productName: name
-          })
-        }
-      >
-        <EvilIcons name="chevron-right" size={ICON_SIZE} />
-      </Touchable>
+    <View style={styles.rightIconContainer}>
+      <EvilIcons name="chevron-right" size={ICON_SIZE} />
     </View>
   </View>
 );

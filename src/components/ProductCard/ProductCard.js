@@ -6,7 +6,10 @@ import Placeholder from 'rn-placeholder';
 import ProductCardHeader from './ProductCardHeader';
 import ProductCardBottom from './ProductCardBottom';
 
+import Touchable from '@appandflow/touchable';
+
 import { colors } from '../../utils/constants';
+import { makeHitSlop } from '../../utils/metrics';
 
 const styles = StyleSheet.create({
   root: {
@@ -42,6 +45,7 @@ const styles = StyleSheet.create({
 });
 
 function ProductCard({
+  _id,
   name,
   description,
   price,
@@ -49,18 +53,20 @@ function ProductCard({
   rating,
   isLoaded,
   placeholder,
-  thumbnail
+  thumbnail,
+  navigation
 }) {
   if (placeholder) {
     return (
       <View style={styles.root}>
         <Placeholder.ImageContent
-          size={80}
+          size={100}
           onReady={isLoaded}
-          lineNumber={3}
-          lineSpacing={8}
+          lineNumber={2}
+          lineSpacing={20}
           animate="shine"
           lastLineWidth="40%"
+          style={{ alignSelf: 'stretch' }}
         >
           <View style={styles.wrapper} />
         </Placeholder.ImageContent>
@@ -69,13 +75,23 @@ function ProductCard({
   } else {
     return (
       <View style={styles.root}>
-        <ProductCardHeader name={name} />
+        <Touchable
+          hitSlop={makeHitSlop(20)}
+          feedback="opacity"
+          onPress={() =>
+            navigation.navigate('ProductDetail', {
+              name: name,
+              price: price
+            })
+          }
+        >
+          <ProductCardHeader name={name} />
 
-        <View style={styles.cardImageContainer}>
-          <Image style={styles.img} source={thumbnail} />
-        </View>
-
-        <ProductCardBottom description={description} price={price} />
+          <View style={styles.cardImageContainer}>
+            <Image style={styles.img} source={thumbnail} />
+          </View>
+          <ProductCardBottom description={description} price={price} />
+        </Touchable>
       </View>
     );
   }
