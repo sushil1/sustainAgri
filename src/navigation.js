@@ -79,10 +79,10 @@ const Tabs = TabNavigator(
   {
     lazy: true,
     tabBarPosition: 'bottom',
-    swipeEnabled: false,
+    swipeEnabled: true,
     tabBarOptions: {
       showIcon: true,
-      showLabel: true,
+      showLabel: false,
       activeTintColor: colors.PRIMARY,
       inactiveTintColor: colors.LIGHT_GRAY,
       style: {

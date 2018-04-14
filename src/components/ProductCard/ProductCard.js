@@ -81,7 +81,9 @@ function ProductCard({
           onPress={() =>
             navigation.navigate('ProductDetail', {
               name: name,
-              price: price
+              price: price,
+              thumbnail: thumbnail,
+              description: description
             })
           }
         >

@@ -25,7 +25,7 @@ class ProductScreen extends Component {
       this.setState({
         isLoaded: true
       });
-    }, 2000);
+    }, 1000);
   }
 
   _renderItem = ({ item }) => (
