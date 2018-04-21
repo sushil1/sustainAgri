@@ -41,6 +41,17 @@ const styles = StyleSheet.create({
   },
   wrapper: {
     flex: 1
+  },
+  placeholderHeader: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginVertical: 5
+  },
+  placeholderDesc: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    marginVertical: 10
   }
 });
 
@@ -59,17 +70,28 @@ function ProductCard({
   if (placeholder) {
     return (
       <View style={styles.root}>
-        <Placeholder.ImageContent
-          size={100}
-          onReady={isLoaded}
-          lineNumber={2}
-          lineSpacing={20}
-          animate="shine"
-          lastLineWidth="40%"
-          style={{ alignSelf: 'stretch' }}
-        >
-          <View style={styles.wrapper} />
-        </Placeholder.ImageContent>
+        <View style={styles.placeholderHeader}>
+          <Placeholder.Box height={20} width="30%" />
+          <Placeholder.Box height={20} width="10%" />
+        </View>
+        <View style={styles.cardImageContainer}>
+          <Placeholder.Box
+            animate="fade"
+            width="100%"
+            height={150}
+            onReady={isLoaded}
+            style={{ alignSelf: 'stretch' }}
+          />
+        </View>
+        <View style={styles.placeholderDesc}>
+          <Placeholder.Box height={13} width="100%" animate="fade" />
+          <Placeholder.Box height={5} width="100%" color="white" />
+          <Placeholder.Box height={13} width="40%" animate="fade" />
+        </View>
+        <View style={styles.placeholderHeader}>
+          <Placeholder.Box height={20} width="25%" />
+          <Placeholder.Box height={20} width="25%" />
+        </View>
       </View>
     );
   } else {

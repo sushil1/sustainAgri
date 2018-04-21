@@ -1,14 +1,14 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 
 import Touchable from '@appandflow/touchable';
 
-import { colors } from '../utils/constants';
-import { makeHitSlop } from '../utils/metrics';
+import { colors } from '../../utils/constants';
+import { makeHitSlop } from '../../utils/metrics';
 
 const styles = StyleSheet.create({
   root: {
-    minHeight: 50,
+    minHeight: 60,
     backgroundColor: colors.WHITE,
     width: '100%',
     shadowColor: colors.SECONDARY,
@@ -18,19 +18,18 @@ const styles = StyleSheet.create({
     },
     shadowRadius: 2,
     shadowOpacity: 0.1,
-    marginVertical: 2,
-    paddingVertical: 5,
+    justifyContent: 'center',
     paddingHorizontal: 5
   }
 });
 
-const MetaCard = ({ price }) => (
+const DescriptionCard = ({ description }) => (
   <View style={styles.root}>
-    <Text>AUD:{price}</Text>
+    <Text>{description}</Text>
   </View>
 );
 
-export default MetaCard;
+export default DescriptionCard;
 
 // <Touchable
 //           hitSlop={makeHitSlop(20)}

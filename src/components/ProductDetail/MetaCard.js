@@ -3,8 +3,8 @@ import { View, Text, StyleSheet } from 'react-native';
 
 import Touchable from '@appandflow/touchable';
 
-import { colors } from '../utils/constants';
-import { makeHitSlop } from '../utils/metrics';
+import { colors } from '../../utils/constants';
+import { makeHitSlop } from '../../utils/metrics';
 
 const styles = StyleSheet.create({
   root: {
@@ -24,13 +24,13 @@ const styles = StyleSheet.create({
   }
 });
 
-const ShippingCard = ({ price }) => (
+const MetaCard = ({ price }) => (
   <View style={styles.root}>
-    <Text>Express shipping available</Text>
+    <Text>AUD:{price}</Text>
   </View>
 );
 
-export default ShippingCard;
+export default MetaCard;
 
 // <Touchable
 //           hitSlop={makeHitSlop(20)}

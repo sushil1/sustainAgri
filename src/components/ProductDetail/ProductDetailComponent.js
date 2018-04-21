@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { Text, StyleSheet, Image, ScrollView } from 'react-native';
 
 import ImageCard from './ImageCard';
 import DescriptionCard from './DescriptionCard';
 import MetaCard from './MetaCard';
 import ShippingCard from './ShippingCard';
-import { FlatList } from 'react-native-gesture-handler';
 
 const styles = StyleSheet.create({
   container: {
@@ -24,12 +23,12 @@ class ProductDetailComponent extends Component {
       thumbnail
     } = this.props.navigation.state.params;
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <ImageCard thumbnail={thumbnail} />
         <DescriptionCard description={description} />
         <MetaCard price={price} />
         <ShippingCard />
-      </View>
+      </ScrollView>
     );
   }
 }

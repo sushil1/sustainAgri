@@ -18,7 +18,7 @@ import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
 import ContactScreen from './screens/ContactScreen';
 import AboutScreen from './screens/AboutScreen';
-import ProductDetailComponent from './components/ProductDetailComponent';
+import ProductDetailComponent from './components/ProductDetail/ProductDetailComponent';
 
 import CartScreen from './screens/CartScreen';
 
@@ -153,6 +153,16 @@ const AppMainNav = StackNavigator(
             onPress={() => navigation.goBack()}
           >
             <EvilIcons size={35} name="chevron-left" />
+          </Touchable>
+        ),
+        headerRight: (
+          <Touchable
+            hitSlop={makeHitSlop(20)}
+            feedback="opacity"
+            style={{ marginRight: 15 }}
+            onPress={() => navigation.goBack()}
+          >
+            <EvilIcons size={25} name="close" />
           </Touchable>
         )
       })

@@ -25,7 +25,7 @@ class ProductScreen extends Component {
       this.setState({
         isLoaded: true
       });
-    }, 1000);
+    }, 3000);
   }
 
   _renderItem = ({ item }) => (
@@ -42,7 +42,7 @@ class ProductScreen extends Component {
         <View style={styles.container}>
           <FlatList
             style={{ alignSelf: 'stretch' }}
-            data={[1, 2, 3, 4]}
+            data={[1, 2]}
             keyExtractor={item => item.toString()}
             renderItem={this._renderPlaceholder}
           />

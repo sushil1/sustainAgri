@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -10,10 +10,19 @@ const styles = StyleSheet.create({
   }
 });
 
-const CartScreen = () => (
-  <View style={styles.container}>
-    <Text>Cart Items</Text>
-  </View>
-);
+class CartScreen extends Component {
+  state = {
+    items: ['a', 'b', 'c']
+  };
+
+  render() {
+    const { items } = this.state;
+    return (
+      <View style={styles.container}>
+        <Text>Cart Items: {items.length}</Text>
+      </View>
+    );
+  }
+}
 
 export default CartScreen;
