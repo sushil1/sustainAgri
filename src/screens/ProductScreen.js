@@ -6,6 +6,9 @@ import ProductCard from '../components/ProductCard/ProductCard';
 import milk from '../../assets/images/milk.jpeg';
 import coffee from '../../assets/images/coffee.jpeg';
 import herbs from '../../assets/images/herbs.jpeg';
+import spicies from '../../assets/images/spicies.jpeg';
+import manure from '../../assets/images/manure.jpg';
+import butter from '../../assets/images/butter.jpg';
 
 const styles = StyleSheet.create({
   container: {
@@ -101,35 +104,32 @@ const products = [
   },
   {
     _id: 103,
-    name: 'Milk',
-    description:
-      'Local cow milk, high in calcium and A2 protein, its really good for babies as well as adults',
+    name: 'Spicies',
+    description: 'Local spicies from our garden grown with compost fertilizer',
     quantity: 1,
-    measurement: 'litre',
-    price: 5000,
-    thumbnail: milk,
+    measurement: 'kg',
+    price: 10000,
+    thumbnail: spicies,
     rating: 4
   },
   {
     _id: 104,
-    name: 'Coffee',
-    description:
-      'Local coffee made grown in our own garden, pure organic aromatic coffee',
+    name: 'Butter',
+    description: 'Butter from local cows',
     quantity: 1,
     measurement: 'cup',
-    price: 4000,
-    thumbnail: coffee,
+    price: 8000,
+    thumbnail: butter,
     rating: 3
   },
   {
     _id: 105,
-    name: 'Herbs',
-    description:
-      'Local herbs from the garden, varities of seasonal herbs available',
+    name: 'Manure',
+    description: 'Cow compost manure, perfect for your vegies garden',
     quantity: 1,
-    measurement: 'bunch',
-    price: 3000,
-    thumbnail: herbs,
+    measurement: 'kilo',
+    price: 20000,
+    thumbnail: manure,
     rating: 4
   }
 ];

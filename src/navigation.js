@@ -87,7 +87,7 @@ const Tabs = TabNavigator(
       inactiveTintColor: colors.LIGHT_GRAY,
       style: {
         backgroundColor: colors.WHITE,
-        height: 50,
+        height: 46,
         paddingVertical: 5
       }
     }
